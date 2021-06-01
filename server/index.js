@@ -28,17 +28,17 @@ massive({
     console.log('Connected to the DataBase')
 })
 
-//endpoints
-// app.post('/api/auth/register', userCtrl.register);
-// app.post('/api/auth/login', userCtrl.login);
-// app.get('/api/auth/me', userCtrl.getUser);
-// app.post('/api/auth/logout', userCtrl.logout);
+// endpoints
+app.post('/api/auth/register', userCtrl.register);
+app.post('/api/auth/login', userCtrl.login);
+app.get('/api/auth/me', userCtrl.getUser);
+app.post('/api/auth/logout', userCtrl.logout);
 
-// //Post Endpoints
-// app.get('/api/posts', postCtrl.readPosts);
-// app.post('/api/post', postCtrl.createPost);
-// app.get('/api/post/:id', postCtrl.readPost);
-// app.delete('/api/post/:id', postCtrl.deletePost)
+// Post Endpoints
+app.get('/api/posts', postCtrl.readPosts);
+app.post('/api/post', postCtrl.createPost);
+app.get('/api/post/:id', postCtrl.readPost);
+app.delete('/api/post/:id', postCtrl.deletePost)
 
 //Listen
 
