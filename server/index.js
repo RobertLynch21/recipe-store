@@ -14,7 +14,7 @@ app.use(
         resave: false,
         saveUninitialized: true,
         secret: SESSION_SECRET,
-        cookie: { maxAge: 6000}
+        cookie: { maxAge: 6000 }
     })
 )
 
