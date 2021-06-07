@@ -11,7 +11,7 @@ module.exports = {
         }
         const salt = bcrypt.genSaltySync(10)//Research this line. 
         const hash = bcrypt.hashSync(password, salt)//Research this line, password from req.body
-        const [user] = await db.auth.registher_user(email, hash)
+        const [user] = await db.auth.register_user(email, hash)
         const [cart] = await db.cart.create_cart(user.user_id)
         delete user.password
         req.session.user = user
@@ -21,7 +21,7 @@ module.exports = {
     login: async (req, res) => {
         const db = req.app.get('db')
         const {email, password} = req.body
-        const [user] = await db.auth.check_email(email)
+        const [user] = await db.auth.check_email(email) //bracks = destructering array
         if(!user){
             return res.status(401).send("User Not Found")
         }
@@ -32,6 +32,7 @@ module.exports = {
         const [cart] = await db.cart.get_cart(user.user_id)
         delete user.password
         req.session.user = user
+        req.session.user.cart_id = cart.cart_id
         return res.status(200).send(req.session.user)
     },
     logout: (req, res) => {

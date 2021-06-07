@@ -2,8 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const massive = require('massive');
 const session = require('express-session');
-const authController = require("./controllers/authController")
-const submitCtrl = require('')
+const authCtrl= require("./controllers/authController")
+const submitCtrl = require('./controllers/submitCtrl')
 
 
 
@@ -34,10 +34,10 @@ massive({
 
 
 // ENDPOINTS
-app.post('/api/auth/register', authController.register);
-app.post('/api/auth/login', authController.login);
-app.get('/api/auth/me', authController.getUser);
-app.delete('/api/auth/logout', authController.logout);
+app.post('/auth/register', authCtrl.register);
+app.post('/auth/login', authCtrl.login);
+app.delete('/auth/logout', authCtrl.logout);
+app.get('/auth/getUser', authCtrl.getUser)
 
 // // POST ENDPOINTS
 // app.get('/api/posts', submitCtrl.readPosts);
