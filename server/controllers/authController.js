@@ -9,7 +9,7 @@ module.exports = {
         if(result){
             return res.status(409).send("email is already in use")
         }
-        const salt = bcrypt.genSaltySync(10)//Research this line. 
+        const salt = bcrypt.genSaltSync(10)//Research this line. 
         const hash = bcrypt.hashSync(password, salt)//Research this line, password from req.body
         const [user] = await db.auth.register_user(email, hash)
         const [cart] = await db.cart.create_cart(user.user_id)
