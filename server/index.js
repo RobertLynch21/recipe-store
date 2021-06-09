@@ -2,13 +2,18 @@ require('dotenv').config();
 const express = require('express');
 const massive = require('massive');
 const session = require('express-session');
-const authCtrl= require("./controllers/authController")
+
+
+const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env;
+
+// Controllers
+const authCtrl = require("./controllers/authController")
+const productsCtrl = require('./controllers/productController')
 const submitCtrl = require('./controllers/submitCtrl')
 
-
+//APP INSTANCE
 
 const app = express();
-const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env;
 
 // TOP LEVEL MIDDLEWARE
 app.use(express.json());
@@ -34,13 +39,13 @@ massive({
 
 
 // ENDPOINTS
+// Auth
 app.post('/auth/register', authCtrl.register);
 app.post('/auth/login', authCtrl.login);
 app.delete('/auth/logout', authCtrl.logout);
 app.get('/auth/getUser', authCtrl.getUser)
 
-// // POST ENDPOINTS
-// app.get('/api/posts', submitCtrl.readPosts);
-// app.post('/api/post', submitCtrl.createPost);
-// app.get('/api/post/:id', submitCtrl.readPost);
-// app.delete('/api/post/:id', submitCtrl.deletePost)
+// Products
+app.get('/api/products', productsCtrl.getProducts)
+
+// Cart

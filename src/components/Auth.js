@@ -11,6 +11,7 @@ const Auth = (props) => {
         .then((res) => {
             console.log(res.data)
             props.setUser(res.data)
+            props.history.push('/products')
         })
         .catch(err => console.log(err))
     }
@@ -19,6 +20,7 @@ const Auth = (props) => {
         .then((res) => {
             console.log(res.data)
             props.setUser(res.data)
+            props.history.push('/products')
         })
         .catch(err => console.log(err))
     }
