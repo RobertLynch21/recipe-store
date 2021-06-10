@@ -9,7 +9,8 @@ const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env;
 // Controllers
 const authCtrl = require("./controllers/authController")
 const productsCtrl = require('./controllers/productController')
-const submitCtrl = require('./controllers/submitCtrl')
+const cartCtrl = require('./controllers/cartController')
+// const submitCtrl = require('./controllers/submitCtrl')
 
 //APP INSTANCE
 
@@ -49,3 +50,5 @@ app.get('/auth/getUser', authCtrl.getUser)
 app.get('/api/products', productsCtrl.getProducts)
 
 // Cart
+app.get('/api/cart', cartCtrl.getCart)
+app.post('/api/cart/:product_id', cartCtrl.addToCart)
