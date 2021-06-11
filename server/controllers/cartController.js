@@ -5,11 +5,11 @@ module.exports = {
         const db = req.app.get("db")
         const {user} = req.session
         if(!user){
-            res.status(500).send("User not logged in.")
+          return  res.status(500).send("User not logged in.")
         }
-        db.cart.getCart_items(user.cart_id).then(cartProducts => {
+        db.cart.get_cart_items(user.cart_id).then(cartProducts => {
             res.status(200).send(cartProducts)
-        }).cath(err => {
+        }).catch(err => {
             console.log(err)
             res.status(500).send(err)
         })
@@ -28,5 +28,14 @@ module.exports = {
             console.log(err)
             res.status(500).send(err)
         })
-    }
+    },
+    deleteItemFromCart: (req, res) => {
+        const db = req.app.db('db')
+        const {user} = req.session
+        const {product_id} = req.params
+        if(!user){
+            return res.status(500).send('User not logged in!')
+        }
+    },
+    changeCartQty: (req, res) => {}
 }
