@@ -23,7 +23,7 @@ app.use(
         resave: false,
         saveUninitialized: true,
         secret: SESSION_SECRET,
-        cookie: { maxAge: 6000 }
+        cookie: { maxAge: 6000 * 60 * 60 * 24 *7 }
     }))
 
 // DATABASE CONNECTION
@@ -52,3 +52,5 @@ app.get('/api/products', productsCtrl.getProducts)
 // Cart
 app.get('/api/cart', cartCtrl.getCart)
 app.post('/api/cart/:product_id', cartCtrl.addToCart)
+app.delete('/api/cart/:product_id', cartCtrl.deleteItemFromCart)
+app.put('/api/cart/:product_id', cartCtrl.changeCartQty)

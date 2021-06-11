@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
+import {setCart} from '../redux/cartReducer'
 
 const Products = (props) => {
     const [products, setProducts] = useState([])
@@ -14,9 +15,20 @@ const Products = (props) => {
     }, [])
 
     const handleAddToCart = (product_id) => {
-        axios.post(`/api/cart/${product_id}`)
-        .then(() => console.log("Success"))
+        const found = props.cartReducer.cart.find(el => {
+            return product_id === el.product_id
+        })
+        if(!found){
+            axios.post(`/api/cart/${product_id}`)
+        .then((res) => props.setCart(res.data))
         .catch((err) => console.log(err))
+        } else{
+            axios.put(`/api/cart/${product_id}`, {quantity: found.quantity + 1})
+        .then((res) => {
+            setCart(res.data)
+        })
+        .catch(err => console.log(err))
+        }
     }
     return(
         <div>
@@ -26,7 +38,7 @@ const Products = (props) => {
                 <div key={product.product_id}>
                     <h4>{product.product_name}</h4>
                     <p>{product.product_description}</p>
-                    {props.user && <button onClick={() => handleAddToCart(product.product_id)}>Add To Cart</button>}
+                    {props.auth.user && <button onClick={() => handleAddToCart(product.product_id)}>Add To Cart</button>}
                 
                 </div>
             )
@@ -35,6 +47,6 @@ const Products = (props) => {
     )
 }
 
-const mapStateToProps = (store) => store.auth
+const mapStateToProps = (store) => store
 
-export default connect(mapStateToProps)(Products)
+export default connect(mapStateToProps, {setCart})(Products)
