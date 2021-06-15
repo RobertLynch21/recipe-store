@@ -32,12 +32,14 @@ const Products = (props) => {
     }
     return(
         <div>
-        <h1>This is my Products Page</h1>
+        <h1>Mrs. Lovett's Recip's</h1>
         {products.map((product) => {
             return (
-                <div key={product.product_id}>
+                <div className="recipe-container" key={product.product_id}>
                     <h4>{product.product_name}</h4>
+                    <img src={product.product_image} alt="pictures of food" />
                     <p>{product.product_description}</p>
+
                     {props.auth.user && <button onClick={() => handleAddToCart(product.product_id)}>Add To Cart</button>}
                 
                 </div>

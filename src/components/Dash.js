@@ -1,6 +1,6 @@
 const Dash = () => {
     return(
-        <h1>This is my Dashboard</h1>
+        <h1>Welcome to Mrs. Lovett's Online Recipe Store</h1>
     )
 }
 

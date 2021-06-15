@@ -25,8 +25,8 @@ const Auth = (props) => {
         .catch(err => console.log(err))
     }
     return(
-        <div>
-        <h1>Register with Email And Password</h1>
+        <div className='log-in'>
+        <h1>Sign in</h1>
         <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
         <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
         <button onClick={handleLogin}>Login</button>
