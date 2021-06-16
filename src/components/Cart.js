@@ -39,11 +39,11 @@ const Cart = (props) => {
 
     return(
         <div>
-        <h1>Check out here</h1>
+        <h1>Review your selection here.</h1>
         {cart.map((product, i) => {
             return(
                 <div key={i}>
-                    <h4>{product.product_name}</h4>
+                    <h1>{product.product_name}</h1>
                     <img src={product.product_image} alt="pictures of food" />
                     <h5>Qty: {product.quantity}</h5>
                     <p className='product-desc'>{product.product_description}</p>

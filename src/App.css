@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: rgb(228, 236, 236);
+  /* background-color: rgb(228, 236, 236); */
 }
 
 .App-logo {
@@ -26,7 +26,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #00eeff;
 }
 
 @keyframes App-logo-spin {
@@ -42,19 +42,36 @@ Link {
   padding: 20px;
 }
 
+a {
+  color: #002A32;
+}
+
+a:hover {
+  color: #002A32;
+  background-color: #218380;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: x-large;
+}
+
 button {
   border: 2px solid rgb(119, 116, 116);
-  background-color: rgb(173, 211, 211);
+  background-color: rgb(109, 209, 209);
   cursor: pointer;
   border-radius: 20px;
+  font-size: 24px;
+  margin: 3px;
+
 }
 
 button:hover {
   background-color: rgb(10, 206, 231);
+  cursor: pointer;
+  
 }
 
 body {
-  background-color: cadetblue;
+  background-color: #E4FDE1;
 }
 
 header a {
@@ -63,9 +80,6 @@ header a {
   
 }
 
-products {
-  background-color: chocolate;
-}
 
 img {
   height: 500px;
@@ -75,16 +89,30 @@ img {
 }
 
 .product-desc {
-  text-size-adjust: 20px;
+ font-size: 16px;
+ width: 50vw;
+ position: relative;
+ left: 475px;
 }
 
 .log-in {
-  display: block;
+  /* display: block;
   margin-top: 200px;
-  background-color: chocolate;
+  background-color: chocolate; */
 }
 
 .recipe-container {
-  height: 800px;
-  width: 800px;
+  height: 700px;
+  width: 700px;
+  position: relative;
+  left: 550px;
+  margin: 50px;
+}
+
+.reg-img {
+  margin-top: 20px;
+}
+
+h1 {
+  text-align: center;
 }

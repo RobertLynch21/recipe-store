@@ -36,7 +36,7 @@ const Products = (props) => {
         {products.map((product) => {
             return (
                 <div className="recipe-container" key={product.product_id}>
-                    <h4>{product.product_name}</h4>
+                    <h2>{product.product_name}</h2>
                     <img src={product.product_image} alt="pictures of food" />
                     <p>{product.product_description}</p>
 
