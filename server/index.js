@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const massive = require('massive');
 const session = require('express-session');
+const path = require('path')
 
 
 const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env;
@@ -10,11 +11,17 @@ const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env;
 const authCtrl = require("./controllers/authController")
 const productsCtrl = require('./controllers/productController')
 const cartCtrl = require('./controllers/cartController')
-// const submitCtrl = require('./controllers/submitCtrl')
+
 
 //APP INSTANCE
 
 const app = express();
+
+app.use(express.static(`${__dirname}/../build`))
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'))
+})
 
 // TOP LEVEL MIDDLEWARE
 app.use(express.json());
@@ -23,8 +30,8 @@ app.use(
         resave: false,
         saveUninitialized: true,
         secret: SESSION_SECRET,
-        cookie: { maxAge: 6000 * 60 * 60 * 24 *7 }
-    }))
+        cookie: { maxAge: 6000 * 60 * 60 * 24 * 7 }
+    })) 
 
 // DATABASE CONNECTION
 massive({
